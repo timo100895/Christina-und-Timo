@@ -1,0 +1,19 @@
+In diesen Ordner gehören eure Bilder.
+
+Lege hier folgende Dateien ab (gleiche Namen wie unten verwenden,
+dann musst du im Code nichts ändern):
+
+  hero.jpg       –  großes Startbild oben      (ca. 2000 px breit)
+  welcome.jpg    –  Begrüßungsbild             (ca. 1200 px breit)
+  location.jpg   –  Foto der Location          (ca. 1200 px breit)
+  moment-1.jpg   –  Momentaufnahme 1           (ca. 1200 px breit)
+  moment-2.jpg   –  Momentaufnahme 2           (ca. 1200 px breit)
+  footer.jpg     –  großes Abschlussbild unten (ca. 2000 px breit)
+
+Tipps:
+- Vor dem Hochladen komprimieren (z.B. squoosh.app, tinypng.com).
+- WebP wird empfohlen (kleiner bei gleicher Qualität).
+- Solange ein Bild fehlt, zeigt die Website automatisch eine
+  neutrale, elegante Farbfläche – nichts sieht kaputt aus.
+
+Diese Hinweisdatei kannst du löschen, sobald die Bilder da sind.
