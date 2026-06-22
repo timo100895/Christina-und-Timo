@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================= -->
+  <!-- SEITEN-TITEL & BESCHREIBUNG  -  TEXT HIER ÄNDERN              -->
+  <!-- ============================================================= -->
+  <title>Christina &amp; Timo · 10. Oktober 2026</title>
+  <meta name="description" content="Hochzeit von Christina und Timo am 10. Oktober 2026 im Skimuseum Hinterzarten. Alle Infos zu Ablauf, Anreise und Anmeldung." />
+
+  <!-- Social-Sharing (optional ausfüllen) -->
+  <meta property="og:title" content="Christina &amp; Timo · 10. Oktober 2026" />
+  <meta property="og:description" content="Wir feiern unsere Hochzeit – hier findet ihr alle Infos." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Fonts: Cormorant Garamond (Überschriften) + Inter (Fließtext) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Eigenes Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+
+  <!-- ============================================================= -->
+  <!-- OPTIONALE ANKER-NAVIGATION (klein, dezent, sticky)            -->
+  <!-- TEXT HIER ÄNDERN  -  Links springen zu den Sektionen          -->
+  <!-- ============================================================= -->
+  <header class="site-nav" id="siteNav">
+    <nav class="site-nav__inner" aria-label="Hauptnavigation">
+      <a class="site-nav__brand" href="#hero">C &amp; T</a>
+      <ul class="site-nav__links">
+        <li><a href="#infos">Infos</a></li>
+        <li><a href="#ablauf">Ablauf</a></li>
+        <li><a href="#anreise">Anreise</a></li>
+        <li><a href="#anmeldung">Anmeldung</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <!-- ============================================================= -->
+  <!-- 1 · HERO                                                      -->
+  <!-- BILD HIER AUSTAUSCHEN: assets/img/hero.jpg                    -->
+  <!-- (Bild wird in style.css unter .hero gesetzt - dort tauschen)  -->
+  <!-- ============================================================= -->
+  <section class="hero" id="hero">
+    <div class="hero__overlay"></div>
+    <div class="hero__content reveal">
+      <!-- TEXT HIER ÄNDERN -->
+      <p class="eyebrow eyebrow--light">Wir heiraten</p>
+      <h1 class="hero__title">Christina &amp; Timo</h1>
+      <p class="hero__date">10. Oktober 2026</p>
+      <a href="#anmeldung" class="btn btn--primary" data-scroll>Jetzt anmelden</a>
+    </div>
+    <div class="hero__scroll" aria-hidden="true">
+      <span>Scrollen</span>
+    </div>
+  </section>
+
+
+  <!-- ============================================================= -->
+  <!-- 2 · BEGRÜSSUNG                                                -->
+  <!-- ============================================================= -->
+  <section class="section welcome" id="willkommen">
+    <div class="container welcome__grid">
+
+      <!-- BILD HIER AUSTAUSCHEN: assets/img/welcome.jpg -->
+      <div class="welcome__media reveal">
+        <img
+          src="assets/img/welcome.jpg"
+          alt="Christina und Timo – Platzhalter für ein gemeinsames Foto"
+          loading="lazy"
+          onerror="this.classList.add('img--placeholder')"
+        />
+      </div>
+
+      <!-- TEXT HIER ÄNDERN -->
+      <div class="welcome__text reveal">
+        <p class="eyebrow">Herzlich Willkommen</p>
+        <h2 class="section__title">Schön, dass ihr Teil<br />unseres besonderen Tages seid</h2>
+        <p class="lead">
+          Wir können es kaum erwarten, diesen Tag mit den Menschen zu feiern,
+          die uns am wichtigsten sind. Auf dieser Seite findet ihr alle
+          Informationen rund um unsere Hochzeit – vom Ablauf über die Anreise
+          bis zur Anmeldung.
+        </p>
+        <p>
+          Nehmt euch einen Moment Zeit, lest in Ruhe alles durch und meldet euch
+          anschließend ganz unkompliziert über das Formular an. Wir freuen uns
+          von Herzen auf euch.
+        </p>
+        <p class="signature">Christina &amp; Timo</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================= -->
+  <!-- 3 · INFO-KACHELN                                             -->
+  <!-- TEXT HIER ÄNDERN (Zeit / Ort je Kachel)                      -->
+  <!-- ============================================================= -->
+  <section class="section tiles" id="infos">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="eyebrow">Auf einen Blick</p>
+        <h2 class="section__title">Der Tag im Überblick</h2>
+      </div>
+
+      <div class="tiles__grid">
+
+        <!-- Kachel 1 -->
+        <article class="tile reveal">
+          <span class="tile__mark" aria-hidden="true">I</span>
+          <h3 class="tile__title">Trauung</h3>
+          <p class="tile__time">14:00 Uhr</p>
+          <p class="tile__text">Skimuseum Hinterzarten</p>
+        </article>
+
+        <!-- Kachel 2 -->
+        <article class="tile reveal">
+          <span class="tile__mark" aria-hidden="true">II</span>
+          <h3 class="tile__title">Sektempfang</h3>
+          <p class="tile__time">14:45 Uhr</p>
+          <p class="tile__text">Anstoßen &amp; kleine Snacks</p>
+        </article>
+
+        <!-- Kachel 3 -->
+        <article class="tile reveal">
+          <span class="tile__mark" aria-hidden="true">III</span>
+          <h3 class="tile__title">Abendessen</h3>
+          <p class="tile__time">18:00 Uhr</p>
+          <p class="tile__text">Gemeinsames Dinner</p>
+        </article>
+
+        <!-- Kachel 4 -->
+        <article class="tile reveal">
+          <span class="tile__mark" aria-hidden="true">IV</span>
+          <h3 class="tile__title">Feier &amp; Party</h3>
+          <p class="tile__time">20:00 Uhr</p>
+          <p class="tile__text">Tanzen &amp; Feiern</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================= -->
+  <!-- 4 · TAGESABLAUF / TIMELINE                                   -->
+  <!-- TEXT HIER ÄNDERN (jeder Programmpunkt = ein <li>)            -->
+  <!-- ============================================================= -->
+  <section class="section timeline-section" id="ablauf">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="eyebrow">Tagesablauf</p>
+        <h2 class="section__title">So feiern wir</h2>
+      </div>
+
+      <ol class="timeline">
+
+        <li class="timeline__item reveal">
+          <span class="timeline__dot" aria-hidden="true"></span>
+          <div class="timeline__content">
+            <p class="timeline__time">14:00 Uhr</p>
+            <h3 class="timeline__title">Trauung</h3>
+            <p class="timeline__text">Wir geben uns das Ja-Wort.</p>
+          </div>
+        </li>
+
+        <li class="timeline__item reveal">
+          <span class="timeline__dot" aria-hidden="true"></span>
+          <div class="timeline__content">
+            <p class="timeline__time">14:45 Uhr</p>
+            <h3 class="timeline__title">Sektempfang</h3>
+            <p class="timeline__text">Anstoßen, gratulieren und gemeinsam ankommen.</p>
+          </div>
+        </li>
+
+        <li class="timeline__item reveal">
+          <span class="timeline__dot" aria-hidden="true"></span>
+          <div class="timeline__content">
+            <p class="timeline__time">18:00 Uhr</p>
+            <h3 class="timeline__title">Abendessen</h3>
+            <p class="timeline__text">Wir lassen uns kulinarisch verwöhnen.</p>
+          </div>
+        </li>
+
+        <li class="timeline__item reveal">
+          <span class="timeline__dot" aria-hidden="true"></span>
+          <div class="timeline__content">
+            <p class="timeline__time">20:00 Uhr</p>
+            <h3 class="timeline__title">Feier &amp; Party</h3>
+            <p class="timeline__text">Bis in die frühen Morgenstunden.</p>
+          </div>
+        </li>
+
+      </ol>
+    </div>
+  </section>
+
+
+  <!-- ============================================================= -->
+  <!-- 5 · ANREISE                                                  -->
+  <!-- TEXT HIER ÄNDERN (Adresse) · BILD: assets/img/location.jpg   -->
+  <!-- ============================================================= -->
+  <section class="section travel" id="anreise">
+    <div class="container travel__grid">
+
+      <!-- Linke Spalte: Adresse -->
+      <div class="travel__info reveal">
+        <p class="eyebrow">Anreise</p>
+        <h2 class="section__title">Wo wir feiern</h2>
+
+        <address class="travel__address">
+          <strong>Skimuseum Hinterzarten</strong><br />
+          Erlenbrucker Straße 35<br />
+          79856 Hinterzarten
+        </address>
+
+        <p>
+          Parkmöglichkeiten findet ihr direkt vor Ort. Plant für die Anreise
+          bitte etwas Puffer ein, damit wir pünktlich starten können.
+        </p>
+
+        <!-- ========================================================= -->
+        <!-- GOOGLE MAPS LINK HIER EINFÜGEN                            -->
+        <!-- Einfach den href-Wert austauschen.                        -->
+        <!-- ========================================================= -->
+        <a
+          href="https://www.google.com/maps/search/?api=1&query=Skimuseum+Hinterzarten+Erlenbrucker+Stra%C3%9Fe+35+79856+Hinterzarten"
+          class="btn btn--primary"
+          target="_blank"
+          rel="noopener"
+        >Route mit Google Maps</a>
+      </div>
+
+      <!-- Rechte Spalte: Bild -->
+      <!-- BILD HIER AUSTAUSCHEN: assets/img/location.jpg -->
+      <div class="travel__media reveal">
+        <img
+          src="assets/img/location.jpg"
+          alt="Skimuseum Hinterzarten – Platzhalter für ein Foto der Location"
+          loading="lazy"
+          onerror="this.classList.add('img--placeholder')"
+        />
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================= -->
+  <!-- 6 · ÜBERNACHTUNG                                             -->
+  <!-- TEXT HIER ÄNDERN                                              -->
+  <!-- ============================================================= -->
+  <section class="section stay" id="uebernachtung">
+    <div class="container stay__inner reveal">
+      <p class="eyebrow">Übernachtung</p>
+      <h2 class="section__title">Bleibt über Nacht</h2>
+      <p class="lead">
+        Für alle, die von weiter anreisen, haben wir ein paar Empfehlungen für
+        Hotels und Pensionen in Hinterzarten und Umgebung. Bei einigen Häusern
+        gibt es ein Zimmerkontingent unter dem Stichwort „Hochzeit Christina &amp; Timo“.
+      </p>
+      <p>
+        <!-- Hier später Hotelnamen, Telefonnummern oder Links eintragen. -->
+        Details zu den Hotels und zur Reservierung folgen in Kürze an dieser Stelle.
+      </p>
+
+      <!-- Optionaler Button/Link (href austauschen oder Zeile löschen) -->
+      <a href="#" class="btn btn--ghost" target="_blank" rel="noopener">Hotelübersicht öffnen</a>
+    </div>
+  </section>
+
+
+  <!-- ============================================================= -->
+  <!-- 7 · FAQ (Accordion)                                          -->
+  <!-- TEXT HIER ÄNDERN (Frage = button, Antwort = Panel)           -->
+  <!-- ============================================================= -->
+  <section class="section faq" id="faq">
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="eyebrow">Gut zu wissen</p>
+        <h2 class="section__title">Häufige Fragen</h2>
+      </div>
+
+      <div class="faq__grid">
+
+        <!-- FAQ-Item -->
+        <div class="faq__item reveal">
+          <button class="faq__question" type="button" aria-expanded="false">
+            <span>Welcher Dresscode gilt?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__answer">
+            <p>Festlich-elegant. Lasst es uns gemeinsam schön machen – wählt
+            gerne etwas, in dem ihr euch wohlfühlt und den ganzen Tag tanzen könnt.</p>
+          </div>
+        </div>
+
+        <!-- FAQ-Item -->
+        <div class="faq__item reveal">
+          <button class="faq__question" type="button" aria-expanded="false">
+            <span>Darf ich eine Begleitung mitbringen?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__answer">
+            <p>Auf eurer Einladung steht, für wie viele Personen sie gilt. Bei
+            Fragen meldet euch einfach direkt bei uns.</p>
+          </div>
+        </div>
+
+        <!-- FAQ-Item -->
+        <div class="faq__item reveal">
+          <button class="faq__question" type="button" aria-expanded="false">
+            <span>Sind Kinder willkommen?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__answer">
+            <p>Eure Kinder sind herzlich willkommen. Gebt uns bei der Anmeldung
+            bitte kurz Bescheid, damit wir gut planen können.</p>
+          </div>
+        </div>
+
+        <!-- FAQ-Item -->
+        <div class="faq__item reveal">
+          <button class="faq__question" type="button" aria-expanded="false">
+            <span>Was wünscht ihr euch zur Hochzeit?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__answer">
+            <p>Das größte Geschenk ist eure Anwesenheit. Wer uns darüber hinaus
+            etwas schenken möchte, freut uns mit einem Beitrag zu unserer
+            Hochzeitsreise.</p>
+          </div>
+        </div>
+
+        <!-- FAQ-Item -->
+        <div class="faq__item reveal">
+          <button class="faq__question" type="button" aria-expanded="false">
+            <span>Wo kann ich parken?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__answer">
+            <p>Direkt an der Location stehen Parkplätze zur Verfügung. Bildet bei
+            Gelegenheit gerne Fahrgemeinschaften.</p>
+          </div>
+        </div>
+
+        <!-- FAQ-Item -->
+        <div class="faq__item reveal">
+          <button class="faq__question" type="button" aria-expanded="false">
+            <span>Bis wann sollen wir uns zurückmelden?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__answer">
+            <p>Bitte meldet euch bis zum <strong>15. August 2026</strong> über
+            das Formular weiter unten an.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================= -->
+  <!-- 8 · ANMELDUNG / MICROSOFT FORMS                              -->
+  <!-- ============================================================= -->
+  <section class="section rsvp" id="anmeldung">
+    <div class="container rsvp__inner">
+      <div class="section__head reveal">
+        <p class="eyebrow">Anmeldung</p>
+        <h2 class="section__title">Sagt uns Bescheid</h2>
+        <p class="lead">Wir freuen uns auf eure Rückmeldung bis zum 15. August 2026.</p>
+      </div>
+
+      <!-- ========================================================= -->
+      <!-- MICROSOFT FORMS LINK HIER EINFÜGEN                        -->
+      <!--                                                           -->
+      <!-- SO GEHT'S:                                                -->
+      <!-- 1) In Microsoft Forms das Formular öffnen                 -->
+      <!-- 2) Oben rechts auf "Antworten sammeln" / "Teilen"        -->
+      <!-- 3) Auf das <> "Einbetten"-Symbol klicken                 -->
+      <!-- 4) Den kompletten <iframe ...>-Code kopieren             -->
+      <!-- 5) Den Block unten zwischen den Markierungen ersetzen    -->
+      <!--                                                           -->
+      <!-- Solange kein Formular eingetragen ist, wird automatisch   -->
+      <!-- der schöne Platzhalter darunter angezeigt.                -->
+      <!-- ========================================================= -->
+
+      <div class="rsvp__form reveal">
+
+        <!-- ===== START: MICROSOFT FORMS EINBETTUNG ===== -->
+        <!--
+          ANLEITUNG: Lösche diesen Kommentar-Block samt Platzhalter
+          und füge stattdessen deinen iframe aus Microsoft Forms ein, z.B.:
+
+          <iframe
+            class="rsvp__iframe"
+            src="MS_FORMS_EMBED_LINK_HIER"
+            title="Anmeldung zur Hochzeit"
+            frameborder="0"
+            marginwidth="0"
+            marginheight="0"
+            allowfullscreen>
+          </iframe>
+        -->
+
+        <!-- PLATZHALTER (wird angezeigt, solange kein Forms-iframe da ist) -->
+        <div class="rsvp__placeholder" id="rsvpPlaceholder">
+          <span class="rsvp__placeholder-mark" aria-hidden="true">✦</span>
+          <h3 class="rsvp__placeholder-title">Anmeldeformular folgt in Kürze</h3>
+          <p class="rsvp__placeholder-text">
+            Hier erscheint bald das Anmeldeformular. Bis dahin erreicht ihr uns
+            jederzeit persönlich.
+          </p>
+          <!-- Optionaler Direkt-Link zum Forms (href austauschen) -->
+          <a href="#" class="btn btn--primary" target="_blank" rel="noopener">Zum Formular</a>
+        </div>
+        <!-- ===== ENDE: MICROSOFT FORMS EINBETTUNG ===== -->
+
+      </div>
+
+      <p class="rsvp__note reveal">
+        Die Antworten werden automatisch in Microsoft Forms gesammelt und können
+        dort jederzeit in Excel exportiert bzw. mit Excel synchronisiert werden.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ============================================================= -->
+  <!-- 9 · AKTUELLE INFORMATIONEN                                   -->
+  <!-- TEXT HIER ÄNDERN - dieser Block wird am häufigsten gepflegt  -->
+  <!-- ============================================================= -->
+  <section class="section updates" id="aktuelles">
+    <div class="container updates__inner reveal">
+      <p class="eyebrow">Aktuelle Informationen</p>
+      <!-- Datum & Status hier bei jeder Änderung anpassen -->
+      <p class="updates__date">Letzte Aktualisierung: 06.06.2026</p>
+      <p class="updates__text">Aktuell gibt es keine Änderungen.</p>
+    </div>
+  </section>
+
+
+  <!-- ============================================================= -->
+  <!-- 10 · FOTO-/MOMENT-BEREICH                                    -->
+  <!-- BILDER HIER AUSTAUSCHEN: moment-1.jpg / moment-2.jpg         -->
+  <!-- ============================================================= -->
+  <section class="section moments" id="momente">
+    <div class="container">
+      <div class="moments__grid">
+
+        <figure class="moments__item moments__item--tall reveal">
+          <img
+            src="assets/img/moment-1.jpg"
+            alt="Momentaufnahme – Platzhalter für ein Foto"
+            loading="lazy"
+            onerror="this.classList.add('img--placeholder')"
+          />
+        </figure>
+
+        <figure class="moments__item reveal">
+          <img
+            src="assets/img/moment-2.jpg"
+            alt="Momentaufnahme – Platzhalter für ein Foto"
+            loading="lazy"
+            onerror="this.classList.add('img--placeholder')"
+          />
+        </figure>
+
+        <figure class="moments__item moments__quote reveal">
+          <!-- TEXT HIER ÄNDERN -->
+          <blockquote>
+            <p>„Das Leben ist schöner, wenn man es teilt.“</p>
+          </blockquote>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================= -->
+  <!-- 11 · FOOTER HERO                                             -->
+  <!-- BILD HIER AUSTAUSCHEN: assets/img/footer.jpg (in style.css)  -->
+  <!-- ============================================================= -->
+  <footer class="footer-hero">
+    <div class="footer-hero__overlay"></div>
+    <div class="footer-hero__content reveal">
+      <!-- TEXT HIER ÄNDERN -->
+      <p class="eyebrow eyebrow--light">Bis bald</p>
+      <h2 class="footer-hero__title">Wir freuen uns auf euch!</h2>
+      <p class="footer-hero__sign">Christina &amp; Timo <span class="footer-hero__symbol" aria-hidden="true">·</span></p>
+      <p class="footer-hero__date">10. Oktober 2026</p>
+    </div>
+  </footer>
+
+
+  <!-- Eigenes JavaScript -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
