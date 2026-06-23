@@ -4,14 +4,22 @@ Eine statische Hochzeitswebsite im Fine-Art-/Editorial-Stil.
 **Reines HTML, CSS und Vanilla JavaScript** – keine Frameworks, keine Build-Tools,
 keine Datenbank. Einfach Dateien austauschen und über Cloudflare Pages veröffentlichen.
 
+**Wichtig:** Alle Dateien liegen flach in **einem** Ordner – alle nebeneinander,
+ohne Unterordner. So muss es auch bei GitHub aussehen, sonst wird das Design nicht
+geladen.
+
 ```
 Hochzeitwebsite/
-├── index.html              ← Inhalte & Struktur (Texte hier ändern)
-├── assets/
-│   ├── css/style.css       ← Design (Farben, Schriften, Layout)
-│   ├── js/main.js          ← Smooth Scroll, FAQ, Animationen
-│   └── img/                ← Hier kommen eure Bilder rein
-└── README.md               ← Diese Anleitung
+├── index.html     ← Inhalte & Struktur (Texte hier ändern)
+├── style.css      ← Design (Farben, Schriften, Layout)
+├── main.js        ← Smooth Scroll, FAQ, Animationen
+├── hero.jpg       ← Bilder (alle im selben Ordner)
+├── welcome.jpg
+├── location.jpg
+├── moment-1.jpg
+├── moment-2.jpg
+├── footer.jpg
+└── README.md      ← Diese Anleitung
 ```
 
 > 💡 **Suchhilfe:** In `index.html` sind alle änderbaren Stellen mit Kommentaren markiert:
@@ -23,8 +31,8 @@ Hochzeitwebsite/
 
 ## 1. Bilder austauschen
 
-Alle Bilder liegen im Ordner `assets/img/`. Verwende **genau diese Dateinamen**,
-dann musst du im Code nichts anpassen:
+Alle Bilder liegen direkt im Hauptordner (neben `index.html`). Verwende **genau
+diese Dateinamen**, dann musst du im Code nichts anpassen:
 
 | Datei | Wofür | Empfohlene Breite |
 |-------|-------|-------------------|
@@ -37,12 +45,12 @@ dann musst du im Code nichts anpassen:
 
 **So geht's:**
 1. Eigenes Foto so benennen wie oben (z.B. `hero.jpg`).
-2. In den Ordner `assets/img/` kopieren und das alte überschreiben.
+2. In den Hauptordner kopieren und das alte überschreiben.
 3. Fertig – beim nächsten Laden erscheint das neue Bild.
 
 > **Hero- und Footer-Bild** werden im CSS gesetzt (Hintergrundbilder).
 > Falls du dort einen anderen Dateinamen nutzen willst, ändere die Zeile
-> `background-image: url("../img/hero.jpg");` in `assets/css/style.css`.
+> `background-image: url("hero.jpg");` in `style.css`.
 > Die übrigen Bilder stehen direkt in `index.html` als `<img src="...">`.
 
 **Wichtig – Bilder vor dem Hochladen komprimieren:**
@@ -139,8 +147,10 @@ Du brauchst ein kostenloses Konto auf [github.com](https://github.com).
 1. Auf GitHub oben rechts **„+“ → „New repository“**.
 2. Name z.B. `hochzeit-christina-timo`, **Public** oder **Private**, **Create repository**.
 3. Auf der neuen Seite **„uploading an existing file“** anklicken.
-4. Den **gesamten Inhalt** des Projektordners (index.html, assets/, README.md)
-   per Drag & Drop hochladen. **Wichtig:** die Ordnerstruktur muss erhalten bleiben.
+4. **Alle Dateien** aus dem Projektordner markieren (index.html, style.css,
+   main.js, alle `.jpg`-Bilder, README.md) und per Drag & Drop hochladen.
+   **Wichtig:** alle Dateien gehören flach ins Repository – nebeneinander, ohne
+   Unterordner. Genau so findet der Browser das Design und die Bilder.
 5. Unten auf **„Commit changes“**.
 
 ### Variante B – mit Git (für Geübte)
@@ -200,7 +210,7 @@ Damit Gäste die Seite z.B. von der Einladung scannen können:
 
 ## ✅ Checkliste vor dem Versand
 
-- [ ] **Bilder ersetzen** – alle 6 Bilder in `assets/img/` (komprimiert)
+- [ ] **Bilder ersetzen** – alle 6 Bilder im Hauptordner (komprimiert)
 - [ ] **Texte prüfen** – Namen, Datum, Zeiten, Adresse, FAQ, Update-Datum
 - [ ] **Google-Maps-Link** in Block 5 kontrollieren
 - [ ] **Microsoft Forms Link einsetzen** (Block 8) und einmal testen
@@ -213,7 +223,7 @@ Damit Gäste die Seite z.B. von der Einladung scannen können:
 
 ## Anpassen für Fortgeschrittene
 
-- **Farben & Schriften** zentral in `assets/css/style.css` unter
+- **Farben & Schriften** zentral in `style.css` unter
   `:root { … }` (Abschnitt „1 · DESIGN-TOKENS“).
 - **Animationsstärke / Abstände** ebenfalls dort über die CSS-Variablen.
 - Die Seite kommt **ohne externe Abhängigkeiten** aus – außer Google Fonts

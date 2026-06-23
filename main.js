@@ -112,4 +112,64 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+
+  /* ===============================================================
+     5 · SCHWEBENDES LOGO
+     Startet groß im Hero und schrumpft beim Scrollen in den
+     Platzhalter links in der Menüleiste. Größe und Position werden
+     abhängig von der Scroll-Position berechnet.
+     =============================================================== */
+  var floatingLogo = document.getElementById("floatingLogo");
+  var navBrand = document.querySelector(".site-nav__brand");
+  var siteNav = document.getElementById("siteNav");
+
+  if (floatingLogo && navBrand) {
+
+    var updateLogo = function () {
+      var vw = window.innerWidth;
+      var vh = window.innerHeight;
+
+      // Ziel (klein, in der Navi) = Maße/Position des Platzhalters
+      var brand = navBrand.getBoundingClientRect();
+      var smallSize = brand.width || 44;
+
+      // Start (groß, im Hero) – seitlich/links versetzt, damit es keinen Kopf überlappt
+      var largeSize = Math.min(vw * 0.46, 210);
+
+      // Scroll-Fortschritt 0..1 über die erste halbe Bildschirmhöhe
+      var threshold = Math.min(vh * 0.5, 420);
+      var p = window.pageYOffset / threshold;
+      if (p < 0) p = 0;
+      if (p > 1) p = 1;
+      var e = p * p * (3 - 2 * p);     // sanfte Ease-Kurve (smoothstep)
+
+      var size = largeSize + (smallSize - largeSize) * e;
+
+      // Startpunkt im Hero: links versetzt (über der freien Landschaft),
+      // damit das große Logo keinen Kopf überlappt.
+      var startCx = vw * 0.28;
+      var startCy = vh * 0.32;
+      var endCx = brand.left + smallSize / 2;
+      var endCy = brand.top + brand.height / 2;
+
+      var cx = startCx + (endCx - startCx) * e;
+      var cy = startCy + (endCy - startCy) * e;
+
+      floatingLogo.style.width = size + "px";
+      floatingLogo.style.height = size + "px";
+      floatingLogo.style.left = (cx - size / 2) + "px";
+      floatingLogo.style.top = (cy - size / 2) + "px";
+
+      // Menüleiste deutlicher sichtbar machen, sobald gescrollt wird
+      if (siteNav) {
+        if (window.pageYOffset > 40) siteNav.classList.add("is-scrolled");
+        else siteNav.classList.remove("is-scrolled");
+      }
+    };
+
+    window.addEventListener("scroll", updateLogo, { passive: true });
+    window.addEventListener("resize", updateLogo);
+    updateLogo();
+  }
+
 });

@@ -22,14 +22,16 @@
   --color-white:      #ffffff;   /* Weiß */
   --color-ink:        #1f1f1f;   /* Text dunkel / Überschriften */
   --color-body:       #666666;   /* Fließtext */
-  --color-gold:       #c8a46b;   /* Akzent Gold */
+  --color-gold:       #8c8a58;   /* Akzent Olivgold (wie Einladungs-Logo) */
   --color-sage:       #5f6b4f;   /* Button Salbei-Grün */
   --color-sage-dark:  #4f5a42;   /* Button Hover */
-  --color-line:       rgba(200,164,107,0.35); /* Linien hell (Gold transparent) */
+  --color-greige:     #a89c84;   /* Greige / Taupe (wie Einladungskarten) */
+  --color-line:       rgba(140,138,88,0.32); /* Linien hell (Olivgold transparent) */
 
   /* --- Schriften --- */
-  --font-head: "Cormorant Garamond", Georgia, "Times New Roman", serif;
-  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-head:   "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-body:   "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-script: "Parisienne", "Cormorant Garamond", cursive; /* Schreibschrift wie Einladung */
 
   /* --- Layout --- */
   --container:    1200px;        /* maximale Inhaltsbreite */
@@ -142,11 +144,11 @@ p:last-child { margin-bottom: 0; }
 
 /* Signatur-Schriftzug */
 .signature {
-  font-family: var(--font-head);
-  font-style: italic;
-  font-size: 30px;
-  color: var(--color-ink);
-  margin-top: 0.6em;
+  font-family: var(--font-script);
+  font-size: 44px;
+  line-height: 1.1;
+  color: var(--color-gold);
+  margin-top: 0.5em;
 }
 
 /* Zentrierter Sektionskopf */
@@ -211,14 +213,19 @@ p:last-child { margin-bottom: 0; }
    OPTIONALE ANKER-NAVIGATION
    ================================================================= */
 .site-nav {
-  position: sticky;
+  position: sticky;          /* bleibt beim Scrollen immer oben sichtbar */
   top: 0;
   z-index: 50;
-  background-color: rgba(248, 246, 242, 0.85);
+  background-color: rgba(248, 246, 242, 0.80);
   backdrop-filter: saturate(160%) blur(10px);
   -webkit-backdrop-filter: saturate(160%) blur(10px);
   border-bottom: 1px solid var(--color-line);
-  transition: transform var(--transition);
+  transition: background-color var(--transition), box-shadow var(--transition);
+}
+/* Sobald gescrollt wird: deutlicher sichtbare Leiste (per JS .is-scrolled) */
+.site-nav.is-scrolled {
+  background-color: rgba(248, 246, 242, 0.97);
+  box-shadow: 0 6px 22px rgba(31, 31, 31, 0.06);
 }
 .site-nav__inner {
   max-width: var(--container);
@@ -229,12 +236,35 @@ p:last-child { margin-bottom: 0; }
   justify-content: space-between;
   gap: 20px;
 }
+/* Platzhalter links in der Navi – hier "landet" das schwebende Logo */
 .site-nav__brand {
-  font-family: var(--font-head);
-  font-size: 22px;
-  letter-spacing: 2px;
-  color: var(--color-ink);
+  display: block;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 auto;
   text-decoration: none;
+}
+
+/* Schwebendes Logo: groß im Hero, per JS in die Menüleiste verkleinert.
+   Start-Werte hier; main.js setzt left/top/width/height beim Scrollen. */
+.floating-logo {
+  position: fixed;
+  top: 21vh;
+  left: calc(50% - 115px);
+  width: 230px;
+  height: 230px;
+  z-index: 60;
+  display: block;
+  line-height: 0;
+  will-change: left, top, width, height;
+}
+.floating-logo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  -webkit-user-drag: none;
+  user-select: none;
 }
 .site-nav__links {
   list-style: none;
@@ -272,31 +302,41 @@ p:last-child { margin-bottom: 0; }
   min-height: 100vh;
   min-height: 100svh;            /* moderne Mobil-Viewport-Einheit */
   display: flex;
-  align-items: center;
+  align-items: flex-end;         /* Text sitzt unten, Köpfe oben bleiben frei */
   justify-content: center;
   text-align: center;
   overflow: hidden;
 
   /* ===== HERO-HINTERGRUNDBILD HIER AUSTAUSCHEN ===== */
-  /* Datei: assets/img/hero.jpg  ·  empfohlen ca. 2000px breit */
-  background-image: url("../img/hero.jpg");
+  /* Datei: hero.jpg  ·  empfohlen ca. 2000px breit */
+  background-image: url("hero.jpg");
   background-size: cover;
-  background-position: center;
+  /* Köpfe weiter nach oben (Himmel über den Köpfen wird kleiner).
+     Feinjustierung: größerer Wert = Köpfe höher; ab ca. 22% werden sie oben
+     angeschnitten. 'center 18%' lässt oben noch etwas Luft. */
+  background-position: center 18%;
   /* Fallback-Farbe, falls Bild fehlt: */
   background-color: #2b2b28;
 }
 .hero__overlay {
   position: absolute;
   inset: 0;
-  /* dunkles, elegantes Overlay für gute Lesbarkeit */
+  /* Overlay: oben leicht (Köpfe frei), unten dunkler für lesbare Schrift */
   background:
-    linear-gradient(180deg, rgba(20,20,18,0.35) 0%, rgba(20,20,18,0.55) 100%);
+    linear-gradient(180deg,
+      rgba(20,20,18,0.30) 0%,
+      rgba(20,20,18,0.10) 38%,
+      rgba(20,20,18,0.40) 72%,
+      rgba(20,20,18,0.68) 100%);
 }
 .hero__content {
   position: relative;
   z-index: 2;
   color: #fff;
   padding-inline: var(--gutter);
+  /* Abstand nach unten, damit der Text-Block unten sitzt (über Beinen/Wiese)
+     und die Köpfe oben komplett frei bleiben. */
+  padding-bottom: clamp(64px, 11vh, 130px);
 }
 .hero__title { color: #fff; }
 .hero__date {
@@ -562,6 +602,54 @@ p:last-child { margin-bottom: 0; }
 
 
 /* =================================================================
+   7b · TRAUZEUGEN / WEITERE INFORMATIONEN  (greige Karte)
+   ================================================================= */
+.witnesses {
+  background-color: var(--color-greige);
+  color: #fff;
+  text-align: center;
+}
+.witnesses__inner { max-width: 760px; margin-inline: auto; }
+.witnesses .eyebrow--light { color: #efe7d6; }
+.witnesses__title {
+  font-family: var(--font-head);
+  font-size: clamp(30px, 4.4vw, 52px);
+  color: #fff;
+  margin-bottom: 0.5em;
+}
+.witnesses__text {
+  color: rgba(255,255,255,0.92);
+  max-width: 520px;
+  margin: 0 auto clamp(28px, 4vw, 40px);
+}
+.witnesses__people {
+  display: flex;
+  justify-content: center;
+  gap: clamp(24px, 6vw, 72px);
+  flex-wrap: wrap;
+}
+.witnesses__person {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-decoration: none;
+  color: #fff;
+  padding: 8px 4px;
+  transition: opacity var(--transition);
+}
+.witnesses__person:hover { opacity: 0.78; }
+.witnesses__name {
+  font-family: var(--font-head);
+  font-size: 28px;
+  line-height: 1.1;
+}
+.witnesses__phone {
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.85);
+}
+
+/* =================================================================
    8 · ANMELDUNG / MICROSOFT FORMS
    ================================================================= */
 .rsvp { background-color: var(--color-white); }
@@ -576,7 +664,10 @@ p:last-child { margin-bottom: 0; }
 /* eingebettetes Formular (Microsoft Forms iframe) */
 .rsvp__iframe {
   width: 100%;
-  min-height: 720px;
+  /* Höhe des Formulars: groß genug, damit KEIN innerer Scrollbalken nötig ist.
+     Falls unten zu viel Leerraum bleibt -> Wert verkleinern.
+     Falls das Formular doch scrollt -> Wert vergrößern. */
+  min-height: 1650px;
   border: 0;
   border-radius: var(--radius);
   background: #fff;
@@ -691,8 +782,8 @@ p:last-child { margin-bottom: 0; }
   overflow: hidden;
 
   /* ===== FOOTER-HINTERGRUNDBILD HIER AUSTAUSCHEN ===== */
-  /* Datei: assets/img/footer.jpg  ·  empfohlen ca. 2000px breit */
-  background-image: url("../img/footer.jpg");
+  /* Datei: footer.jpg  ·  empfohlen ca. 2000px breit */
+  background-image: url("footer.jpg");
   background-size: cover;
   background-position: center;
   background-color: #2b2b28;     /* Fallback-Farbe */
@@ -713,14 +804,20 @@ p:last-child { margin-bottom: 0; }
   font-size: clamp(36px, 6vw, 76px);
   margin-bottom: 18px;
 }
+.footer-logo {
+  height: clamp(58px, 8vw, 76px);
+  width: auto;
+  display: block;
+  margin: 0 auto clamp(20px, 3vw, 30px);
+  color: #f3e9d6;
+}
 .footer-hero__sign {
-  font-family: var(--font-head);
-  font-style: italic;
-  font-size: clamp(22px, 3vw, 32px);
+  font-family: var(--font-script);
+  font-size: clamp(36px, 5.5vw, 56px);
+  line-height: 1.1;
   color: #f3e9d6;
   margin: 0;
 }
-.footer-hero__symbol { color: var(--color-gold); margin-left: 6px; }
 .footer-hero__date {
   font-size: 13px;
   letter-spacing: 4px;
@@ -772,10 +869,10 @@ p:last-child { margin-bottom: 0; }
   /* Bild im Begrüßungsblock auf Mobil zuerst, Text darunter ist ok */
   .welcome__media { aspect-ratio: 4 / 3; }
 
-  /* Anker-Navigation: Brand ausblenden, Links zentrieren */
-  .site-nav__brand { display: none; }
-  .site-nav__inner { justify-content: center; }
-  .site-nav__links { gap: 18px; }
+  /* Anker-Navigation: kleinerer Logo-Platz, Links rücken zusammen */
+  .site-nav__brand { width: 38px; height: 38px; }
+  .site-nav__inner { gap: 12px; }
+  .site-nav__links { gap: 16px; }
 
   /* Momente: einspaltig, gleichmäßige Höhen */
   .moments__grid { grid-template-columns: 1fr; }
