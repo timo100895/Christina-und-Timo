@@ -21,7 +21,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <!-- Eigenes Stylesheet -->
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
@@ -119,7 +119,7 @@
           <span class="tile__mark" aria-hidden="true">I</span>
           <h3 class="tile__title">Trauung</h3>
           <p class="tile__time">14:00 Uhr</p>
-          <p class="tile__text">Skimuseum Hinterzarten</p>
+          <p class="tile__text">Christkönigskirche · Titisee</p>
         </article>
 
         <!-- Kachel 2 -->
@@ -212,32 +212,52 @@
   <section class="section travel" id="anreise">
     <div class="container travel__grid">
 
-      <!-- Linke Spalte: Adresse -->
+      <!-- Linke Spalte: zwei Orte (Trauung + Feier) -->
       <div class="travel__info reveal">
         <p class="eyebrow">Anreise</p>
-        <h2 class="section__title">Wo wir feiern</h2>
+        <h2 class="section__title">Orte &amp; Anreise</h2>
 
-        <address class="travel__address">
-          <strong>Skimuseum Hinterzarten</strong><br />
-          Erlenbrucker Straße 35<br />
-          79856 Hinterzarten
-        </address>
+        <!-- === ORT 1: TRAUUNG (Kirche) === -->
+        <div class="travel__place">
+          <p class="travel__label">Trauung · 14:00 Uhr</p>
+          <!-- TEXT HIER ÄNDERN -->
+          <address class="travel__address">
+            <strong>Christkönigskirche Titisee</strong><br />
+            Alte Poststraße 12<br />
+            79822 Titisee-Neustadt
+          </address>
+          <!-- GOOGLE MAPS LINK HIER EINFÜGEN (Kirche) -->
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Christk%C3%B6nigskirche+Alte+Poststra%C3%9Fe+12+79822+Titisee-Neustadt"
+            class="btn btn--ghost"
+            target="_blank"
+            rel="noopener"
+          >Route zur Kirche</a>
+        </div>
 
-        <p>
-          Parkmöglichkeiten findet ihr direkt vor Ort. Plant für die Anreise
-          bitte etwas Puffer ein, damit wir pünktlich starten können.
+        <!-- === ORT 2: SEKTEMPFANG & FEIER === -->
+        <div class="travel__place">
+          <p class="travel__label">Sektempfang &amp; Feier · ab 14:45 Uhr</p>
+          <!-- TEXT HIER ÄNDERN -->
+          <address class="travel__address">
+            <strong>Skimuseum Hinterzarten</strong><br />
+            Erlenbrucker Straße 35<br />
+            79856 Hinterzarten
+          </address>
+          <!-- GOOGLE MAPS LINK HIER EINFÜGEN (Feier) -->
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Skimuseum+Hinterzarten+Erlenbrucker+Stra%C3%9Fe+35+79856+Hinterzarten"
+            class="btn btn--primary"
+            target="_blank"
+            rel="noopener"
+          >Route zur Feier</a>
+        </div>
+
+        <!-- TEXT HIER ÄNDERN -->
+        <p class="travel__hint">
+          Von der Kirche zur Feier sind es ca. 15 Autominuten. Parkmöglichkeiten
+          findet ihr direkt vor Ort – bildet gerne Fahrgemeinschaften.
         </p>
-
-        <!-- ========================================================= -->
-        <!-- GOOGLE MAPS LINK HIER EINFÜGEN                            -->
-        <!-- Einfach den href-Wert austauschen.                        -->
-        <!-- ========================================================= -->
-        <a
-          href="https://www.google.com/maps/search/?api=1&query=Skimuseum+Hinterzarten+Erlenbrucker+Stra%C3%9Fe+35+79856+Hinterzarten"
-          class="btn btn--primary"
-          target="_blank"
-          rel="noopener"
-        >Route mit Google Maps</a>
       </div>
 
       <!-- Rechte Spalte: Bild -->
@@ -505,6 +525,6 @@
 
 
   <!-- Eigenes JavaScript -->
-  <script src="main.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
