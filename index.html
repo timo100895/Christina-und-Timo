@@ -8,7 +8,7 @@
   <!-- SEITEN-TITEL & BESCHREIBUNG  -  TEXT HIER ÄNDERN              -->
   <!-- ============================================================= -->
   <title>Christina &amp; Timo · 10. Oktober 2026</title>
-  <meta name="description" content="Hochzeit von Christina und Timo am 10. Oktober 2026 im Skimuseum Hinterzarten. Alle Infos zu Ablauf, Anreise und Anmeldung." />
+  <meta name="description" content="Hochzeit von Christina und Timo am 10. Oktober 2026 – Trauung in Titisee, Feier in der Förberhofmühle Langenordnach. Alle Infos zu Ablauf, Anreise und Rückmeldung." />
 
   <!-- Social-Sharing (optional ausfüllen) -->
   <meta property="og:title" content="Christina &amp; Timo · 10. Oktober 2026" />
@@ -18,7 +18,10 @@
   <!-- Google Fonts: Cormorant Garamond (Überschriften) + Inter (Fließtext) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet" />
+
+  <!-- Favicon: Logo (Browser-Tab-Icon) -->
+  <link rel="icon" type="image/png" href="CundT_Logo.png" />
 
   <!-- Eigenes Stylesheet -->
   <link rel="stylesheet" href="style.css" />
@@ -32,7 +35,8 @@
   <!-- ============================================================= -->
   <header class="site-nav" id="siteNav">
     <nav class="site-nav__inner" aria-label="Hauptnavigation">
-      <a class="site-nav__brand" href="#hero">C &amp; T</a>
+      <!-- Platzhalter: hier "landet" beim Scrollen das schwebende Logo -->
+      <a class="site-nav__brand" href="#hero" aria-label="Christina &amp; Timo – nach oben"></a>
       <ul class="site-nav__links">
         <li><a href="#infos">Infos</a></li>
         <li><a href="#ablauf">Ablauf</a></li>
@@ -41,6 +45,15 @@
       </ul>
     </nav>
   </header>
+
+  <!-- ============================================================= -->
+  <!-- SCHWEBENDES LOGO                                              -->
+  <!-- Groß im Hero · schrumpft beim Scrollen in die Menüleiste     -->
+  <!-- (Positionierung/Größe steuert main.js)                       -->
+  <!-- ============================================================= -->
+  <a class="floating-logo" id="floatingLogo" href="#hero" aria-label="Christina und Timo – nach oben">
+    <img src="CundT_Logo.png" alt="Logo Christina und Timo" />
+  </a>
 
 
   <!-- ============================================================= -->
@@ -72,7 +85,7 @@
       <!-- BILD HIER AUSTAUSCHEN: welcome.jpg -->
       <div class="welcome__media reveal">
         <img
-          src="welcome.jpg"
+          src="Welcome.jpg"
           alt="Christina und Timo – Platzhalter für ein gemeinsames Foto"
           loading="lazy"
           onerror="this.classList.add('img--placeholder')"
@@ -81,20 +94,19 @@
 
       <!-- TEXT HIER ÄNDERN -->
       <div class="welcome__text reveal">
-        <p class="eyebrow">Herzlich Willkommen</p>
-        <h2 class="section__title">Schön, dass ihr Teil<br />unseres besonderen Tages seid</h2>
+        <p class="eyebrow">Wir sagen ja</p>
+        <h2 class="section__title">Schön, dass ihr Teil unseres besonderen Tages seid</h2>
         <p class="lead">
-          Wir können es kaum erwarten, diesen Tag mit den Menschen zu feiern,
-          die uns am wichtigsten sind. Auf dieser Seite findet ihr alle
-          Informationen rund um unsere Hochzeit – vom Ablauf über die Anreise
-          bis zur Anmeldung.
+          Unsere Liebe begleitet uns schon lange – nun beginnt unser gemeinsames
+          „Für immer“. Zusammen mit euch möchten wir unseren Tag unvergesslich
+          machen und laden euch von Herzen zu unserer Hochzeit ein.
         </p>
         <p>
-          Nehmt euch einen Moment Zeit, lest in Ruhe alles durch und meldet euch
-          anschließend ganz unkompliziert über das Formular an. Wir freuen uns
-          von Herzen auf euch.
+          Wir freuen uns auf einen wunderschönen Tag voller Liebe, Lachen und
+          unvergesslicher Momente mit euch. Auf dieser Seite findet ihr alle
+          Infos rund um Ablauf, Anreise und Rückmeldung.
         </p>
-        <p class="signature">Christina &amp; Timo</p>
+        <p class="signature">Christina + Timo</p>
       </div>
 
     </div>
@@ -119,31 +131,31 @@
           <span class="tile__mark" aria-hidden="true">I</span>
           <h3 class="tile__title">Trauung</h3>
           <p class="tile__time">14:00 Uhr</p>
-          <p class="tile__text">Christkönigskirche · Titisee</p>
+          <p class="tile__text">Kirche Christkönig · Titisee</p>
         </article>
 
         <!-- Kachel 2 -->
         <article class="tile reveal">
           <span class="tile__mark" aria-hidden="true">II</span>
           <h3 class="tile__title">Sektempfang</h3>
-          <p class="tile__time">14:45 Uhr</p>
-          <p class="tile__text">Anstoßen &amp; kleine Snacks</p>
+          <p class="tile__time">anschließend</p>
+          <p class="tile__text">An der Kirche</p>
         </article>
 
         <!-- Kachel 3 -->
         <article class="tile reveal">
           <span class="tile__mark" aria-hidden="true">III</span>
-          <h3 class="tile__title">Abendessen</h3>
-          <p class="tile__time">18:00 Uhr</p>
-          <p class="tile__text">Gemeinsames Dinner</p>
+          <h3 class="tile__title">Gemeinsame Fahrt</h3>
+          <p class="tile__time">ab 17:00 Uhr</p>
+          <p class="tile__text">Zur Förberhofmühle</p>
         </article>
 
         <!-- Kachel 4 -->
         <article class="tile reveal">
           <span class="tile__mark" aria-hidden="true">IV</span>
-          <h3 class="tile__title">Feier &amp; Party</h3>
-          <p class="tile__time">20:00 Uhr</p>
-          <p class="tile__text">Tanzen &amp; Feiern</p>
+          <h3 class="tile__title">Feiern &amp; Tanzen</h3>
+          <p class="tile__time">bis in die Nacht</p>
+          <p class="tile__text">Förberhofmühle · Langenordnach</p>
         </article>
 
       </div>
@@ -168,35 +180,35 @@
           <span class="timeline__dot" aria-hidden="true"></span>
           <div class="timeline__content">
             <p class="timeline__time">14:00 Uhr</p>
-            <h3 class="timeline__title">Trauung</h3>
-            <p class="timeline__text">Wir geben uns das Ja-Wort.</p>
+            <h3 class="timeline__title">Kirchliche Trauung</h3>
+            <p class="timeline__text">In der Kirche Christkönig in Titisee.</p>
           </div>
         </li>
 
         <li class="timeline__item reveal">
           <span class="timeline__dot" aria-hidden="true"></span>
           <div class="timeline__content">
-            <p class="timeline__time">14:45 Uhr</p>
+            <p class="timeline__time">Anschließend</p>
             <h3 class="timeline__title">Sektempfang</h3>
-            <p class="timeline__text">Anstoßen, gratulieren und gemeinsam ankommen.</p>
+            <p class="timeline__text">Anstoßen und gratulieren – direkt an der Kirche.</p>
           </div>
         </li>
 
         <li class="timeline__item reveal">
           <span class="timeline__dot" aria-hidden="true"></span>
           <div class="timeline__content">
-            <p class="timeline__time">18:00 Uhr</p>
-            <h3 class="timeline__title">Abendessen</h3>
-            <p class="timeline__text">Wir lassen uns kulinarisch verwöhnen.</p>
+            <p class="timeline__time">ab 17:00 Uhr</p>
+            <h3 class="timeline__title">Gemeinsame Fahrt</h3>
+            <p class="timeline__text">Weiter geht es zur Förberhofmühle in Langenordnach.</p>
           </div>
         </li>
 
         <li class="timeline__item reveal">
           <span class="timeline__dot" aria-hidden="true"></span>
           <div class="timeline__content">
-            <p class="timeline__time">20:00 Uhr</p>
-            <h3 class="timeline__title">Feier &amp; Party</h3>
-            <p class="timeline__text">Bis in die frühen Morgenstunden.</p>
+            <p class="timeline__time">Abends</p>
+            <h3 class="timeline__title">Feiern &amp; Tanzen</h3>
+            <p class="timeline__text">Gemeinsames Essen und Feiern bis in die Nacht.</p>
           </div>
         </li>
 
@@ -207,7 +219,7 @@
 
   <!-- ============================================================= -->
   <!-- 5 · ANREISE                                                  -->
-  <!-- TEXT HIER ÄNDERN (Adresse) · BILD: assets/img/location.jpg   -->
+  <!-- TEXT HIER ÄNDERN (Adresse) · BILD: location.jpg   -->
   <!-- ============================================================= -->
   <section class="section travel" id="anreise">
     <div class="container travel__grid">
@@ -217,12 +229,12 @@
         <p class="eyebrow">Anreise</p>
         <h2 class="section__title">Orte &amp; Anreise</h2>
 
-        <!-- === ORT 1: TRAUUNG (Kirche) === -->
+        <!-- === ORT 1: TRAUUNG & SEKTEMPFANG (Kirche) === -->
         <div class="travel__place">
-          <p class="travel__label">Trauung · 14:00 Uhr</p>
+          <p class="travel__label">Trauung &amp; Sektempfang · ab 14:00 Uhr</p>
           <!-- TEXT HIER ÄNDERN -->
           <address class="travel__address">
-            <strong>Christkönigskirche Titisee</strong><br />
+            <strong>Kirche Christkönig Titisee</strong><br />
             Alte Poststraße 12<br />
             79822 Titisee-Neustadt
           </address>
@@ -235,18 +247,18 @@
           >Route zur Kirche</a>
         </div>
 
-        <!-- === ORT 2: SEKTEMPFANG & FEIER === -->
+        <!-- === ORT 2: FEIER (Förberhofmühle) === -->
         <div class="travel__place">
-          <p class="travel__label">Sektempfang &amp; Feier · ab 14:45 Uhr</p>
+          <p class="travel__label">Feier · ab 17:00 Uhr</p>
           <!-- TEXT HIER ÄNDERN -->
           <address class="travel__address">
-            <strong>Skimuseum Hinterzarten</strong><br />
-            Erlenbrucker Straße 35<br />
-            79856 Hinterzarten
+            <strong>Förberhofmühle</strong><br />
+            Langenordnach 5<br />
+            79822 Titisee-Neustadt
           </address>
           <!-- GOOGLE MAPS LINK HIER EINFÜGEN (Feier) -->
           <a
-            href="https://www.google.com/maps/search/?api=1&query=Skimuseum+Hinterzarten+Erlenbrucker+Stra%C3%9Fe+35+79856+Hinterzarten"
+            href="https://www.google.com/maps/search/?api=1&query=F%C3%B6rberhofm%C3%BChle+Langenordnach+5+79822+Titisee-Neustadt"
             class="btn btn--primary"
             target="_blank"
             rel="noopener"
@@ -255,17 +267,18 @@
 
         <!-- TEXT HIER ÄNDERN -->
         <p class="travel__hint">
-          Von der Kirche zur Feier sind es ca. 15 Autominuten. Parkmöglichkeiten
-          findet ihr direkt vor Ort – bildet gerne Fahrgemeinschaften.
+          Nach dem Sektempfang fahren wir ab 17:00 Uhr gemeinsam zur Förberhofmühle
+          (ca. 15 Autominuten). Parkmöglichkeiten gibt es vor Ort – bildet gerne
+          Fahrgemeinschaften.
         </p>
       </div>
 
       <!-- Rechte Spalte: Bild -->
-      <!-- BILD HIER AUSTAUSCHEN: assets/img/location.jpg -->
+      <!-- BILD HIER AUSTAUSCHEN: location.jpg -->
       <div class="travel__media reveal">
         <img
           src="location.jpg"
-          alt="Skimuseum Hinterzarten – Platzhalter für ein Foto der Location"
+          alt="Förberhofmühle in Langenordnach – unsere Feier-Location"
           loading="lazy"
           onerror="this.classList.add('img--placeholder')"
         />
@@ -285,7 +298,7 @@
       <h2 class="section__title">Bleibt über Nacht</h2>
       <p class="lead">
         Für alle, die von weiter anreisen, haben wir ein paar Empfehlungen für
-        Hotels und Pensionen in Hinterzarten und Umgebung. Bei einigen Häusern
+        Hotels und Pensionen in Titisee-Neustadt und Umgebung. Bei einigen Häusern
         gibt es ein Zimmerkontingent unter dem Stichwort „Hochzeit Christina &amp; Timo“.
       </p>
       <p>
@@ -355,9 +368,9 @@
             <span class="faq__icon" aria-hidden="true"></span>
           </button>
           <div class="faq__answer">
-            <p>Das größte Geschenk ist eure Anwesenheit. Wer uns darüber hinaus
-            etwas schenken möchte, freut uns mit einem Beitrag zu unserer
-            Hochzeitsreise.</p>
+            <p>Das größte Geschenk ist eure Anwesenheit. Und da wir unsere Koffer
+            lieber mit Erinnerungen als mit Dingen füllen, freuen wir uns über
+            einen kleinen Beitrag für unsere Flitterwochen.</p>
           </div>
         </div>
 
@@ -376,15 +389,45 @@
         <!-- FAQ-Item -->
         <div class="faq__item reveal">
           <button class="faq__question" type="button" aria-expanded="false">
-            <span>Bis wann sollen wir uns zurückmelden?</span>
+            <span>Müssen wir uns zurückmelden?</span>
             <span class="faq__icon" aria-hidden="true"></span>
           </button>
           <div class="faq__answer">
-            <p>Bitte meldet euch bis zum <strong>15. August 2026</strong> über
-            das Formular weiter unten an.</p>
+            <p>Wir gehen fest davon aus, dass ihr mit uns feiert. Solltet ihr
+            <strong>nicht</strong> dabei sein können, gebt uns bitte bis zum
+            <strong>22. August 2026</strong> Bescheid – am einfachsten über das
+            Formular weiter unten.</p>
           </div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================= -->
+  <!-- 7b · TRAUZEUGEN / WEITERE INFORMATIONEN                      -->
+  <!-- TEXT HIER ÄNDERN (Namen & Telefonnummern)                    -->
+  <!-- ============================================================= -->
+  <section class="section witnesses" id="trauzeugen">
+    <div class="container witnesses__inner reveal">
+      <p class="eyebrow eyebrow--light">Weitere Informationen</p>
+      <h2 class="witnesses__title">Eine Überraschung geplant?</h2>
+      <p class="witnesses__text">
+        Falls ihr eine Idee, einen Beitrag oder eine Überraschung für den Tag
+        plant, meldet euch gerne bei unseren Trauzeugen:
+      </p>
+      <div class="witnesses__people">
+        <!-- Trauzeugin 1 -->
+        <a class="witnesses__person" href="tel:+491627583074">
+          <span class="witnesses__name">Julia Saier</span>
+          <span class="witnesses__phone">+49 162 7583074</span>
+        </a>
+        <!-- Trauzeuge 2 -->
+        <a class="witnesses__person" href="tel:+491703886241">
+          <span class="witnesses__name">Jannis Reith</span>
+          <span class="witnesses__phone">+49 170 3886241</span>
+        </a>
       </div>
     </div>
   </section>
@@ -396,62 +439,37 @@
   <section class="section rsvp" id="anmeldung">
     <div class="container rsvp__inner">
       <div class="section__head reveal">
-        <p class="eyebrow">Anmeldung</p>
+        <p class="eyebrow">Rückmeldung</p>
         <h2 class="section__title">Sagt uns Bescheid</h2>
-        <p class="lead">Wir freuen uns auf eure Rückmeldung bis zum 15. August 2026.</p>
+        <p class="lead">Wir gehen fest davon aus, dass ihr mit uns feiert. Solltet ihr
+        nicht dabei sein können, gebt uns bitte bis zum 22. August 2026 Bescheid.</p>
       </div>
 
       <!-- ========================================================= -->
-      <!-- MICROSOFT FORMS LINK HIER EINFÜGEN                        -->
-      <!--                                                           -->
-      <!-- SO GEHT'S:                                                -->
-      <!-- 1) In Microsoft Forms das Formular öffnen                 -->
-      <!-- 2) Oben rechts auf "Antworten sammeln" / "Teilen"        -->
-      <!-- 3) Auf das <> "Einbetten"-Symbol klicken                 -->
-      <!-- 4) Den kompletten <iframe ...>-Code kopieren             -->
-      <!-- 5) Den Block unten zwischen den Markierungen ersetzen    -->
-      <!--                                                           -->
-      <!-- Solange kein Formular eingetragen ist, wird automatisch   -->
-      <!-- der schöne Platzhalter darunter angezeigt.                -->
+      <!-- MICROSOFT FORMS – Formular ist unten eingebettet.         -->
+      <!-- Zum Ändern die src-URL im <iframe> austauschen.           -->
+      <!-- Antworten landen automatisch in Microsoft Forms.          -->
       <!-- ========================================================= -->
 
       <div class="rsvp__form reveal">
 
-        <!-- ===== START: MICROSOFT FORMS EINBETTUNG ===== -->
-        <!--
-          ANLEITUNG: Lösche diesen Kommentar-Block samt Platzhalter
-          und füge stattdessen deinen iframe aus Microsoft Forms ein, z.B.:
-
-          <iframe
-            class="rsvp__iframe"
-            src="MS_FORMS_EMBED_LINK_HIER"
-            title="Anmeldung zur Hochzeit"
-            frameborder="0"
-            marginwidth="0"
-            marginheight="0"
-            allowfullscreen>
-          </iframe>
-        -->
-
-        <!-- PLATZHALTER (wird angezeigt, solange kein Forms-iframe da ist) -->
-        <div class="rsvp__placeholder" id="rsvpPlaceholder">
-          <span class="rsvp__placeholder-mark" aria-hidden="true">✦</span>
-          <h3 class="rsvp__placeholder-title">Anmeldeformular folgt in Kürze</h3>
-          <p class="rsvp__placeholder-text">
-            Hier erscheint bald das Anmeldeformular. Bis dahin erreicht ihr uns
-            jederzeit persönlich.
-          </p>
-          <!-- Optionaler Direkt-Link zum Forms (href austauschen) -->
-          <a href="#" class="btn btn--primary" target="_blank" rel="noopener">Zum Formular</a>
-        </div>
-        <!-- ===== ENDE: MICROSOFT FORMS EINBETTUNG ===== -->
+        <!-- ===== MICROSOFT FORMS EINBETTUNG =====
+             Zum späteren Tauschen einfach die src-URL unten ersetzen. -->
+        <iframe
+          class="rsvp__iframe"
+          src="https://forms.cloud.microsoft/e/PxBKtaCXGH?embed=true"
+          title="Anmeldung zur Hochzeit von Christina und Timo"
+          frameborder="0"
+          marginwidth="0"
+          marginheight="0"
+          allowfullscreen
+          webkitallowfullscreen
+          mozallowfullscreen
+          msallowfullscreen>
+        </iframe>
 
       </div>
 
-      <p class="rsvp__note reveal">
-        Die Antworten werden automatisch in Microsoft Forms gesammelt und können
-        dort jederzeit in Excel exportiert bzw. mit Excel synchronisiert werden.
-      </p>
     </div>
   </section>
 
@@ -464,7 +482,7 @@
     <div class="container updates__inner reveal">
       <p class="eyebrow">Aktuelle Informationen</p>
       <!-- Datum & Status hier bei jeder Änderung anpassen -->
-      <p class="updates__date">Letzte Aktualisierung: 06.06.2026</p>
+      <p class="updates__date">Letzte Aktualisierung: 23.06.2026</p>
       <p class="updates__text">Aktuell gibt es keine Änderungen.</p>
     </div>
   </section>
@@ -510,15 +528,15 @@
 
   <!-- ============================================================= -->
   <!-- 11 · FOOTER HERO                                             -->
-  <!-- BILD HIER AUSTAUSCHEN: assets/img/footer.jpg (in style.css)  -->
+  <!-- BILD HIER AUSTAUSCHEN: footer.jpg (in style.css)  -->
   <!-- ============================================================= -->
   <footer class="footer-hero">
     <div class="footer-hero__overlay"></div>
     <div class="footer-hero__content reveal">
       <!-- TEXT HIER ÄNDERN -->
-      <p class="eyebrow eyebrow--light">Bis bald</p>
+      <img class="footer-logo" src="CundT_Logo.png" alt="Logo Christina und Timo" />
       <h2 class="footer-hero__title">Wir freuen uns auf euch!</h2>
-      <p class="footer-hero__sign">Christina &amp; Timo <span class="footer-hero__symbol" aria-hidden="true">·</span></p>
+      <p class="footer-hero__sign">Christina + Timo</p>
       <p class="footer-hero__date">10. Oktober 2026</p>
     </div>
   </footer>
