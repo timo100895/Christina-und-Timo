@@ -448,15 +448,26 @@ p:last-child { margin-bottom: 0; }
   gap: clamp(36px, 6vw, 90px);
   align-items: center;
 }
+/* je Ort ein Block (Trauung / Feier) */
+.travel__place { margin-bottom: 38px; }
+.travel__label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin: 0 0 10px;
+}
 .travel__address {
   font-style: normal;
   font-size: 19px;
   line-height: 1.8;
   color: var(--color-ink);
-  margin: 0 0 1.4em;
+  margin: 0 0 1.1em;
   padding-left: 18px;
   border-left: 2px solid var(--color-gold);
 }
+.travel__hint { font-size: 16px; margin: 0; }
 .travel__media {
   aspect-ratio: 5 / 4;
   overflow: hidden;
