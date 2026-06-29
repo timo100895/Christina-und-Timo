@@ -86,7 +86,7 @@ Ersetze einfach den Text zwischen `>` und `</h2>`.
 | 5  | Anreise (Adresse, Google-Maps-Link) |
 | 6  | Übernachtung / Hotels |
 | 7  | FAQ (Fragen & Antworten) |
-| 8  | Anmeldung / Microsoft Forms |
+| 8  | Anmeldung / RSVP-Formular (Supabase) |
 | 9  | Aktuelle Informationen |
 | 10 | Foto-/Moment-Bereich |
 | 11 | Footer (Abschluss) |
@@ -103,39 +103,22 @@ Hier kannst du jederzeit kurzfristige Hinweise (Wetter, Parken, Zeiten) eintrage
 
 ---
 
-## 3. Microsoft Forms einbinden
+## 3. Anmeldung (RSVP) – eigenes Formular mit Supabase
 
-Die Anmeldung läuft über **Microsoft Forms**. Antworten landen automatisch in Forms
-und lassen sich dort als **Excel exportieren** oder live mit Excel synchronisieren.
+Die Anmeldung läuft **nicht** mehr über Microsoft Forms, sondern über ein
+**eigenes Formular** im Abschnitt „Anmeldung" auf `index.html`. Die Daten werden
+in Supabase gespeichert (Tabelle `rsvp_responses`) und im Admin-Bereich
+ausgewertet (inkl. **CSV-Export**).
 
-### Schritt für Schritt
-1. Formular auf [forms.office.com](https://forms.office.com) erstellen
-   (z.B. Felder: Name, Anzahl Personen, Zu-/Absage, Allergien, Anmerkungen).
-2. Im Formular oben rechts auf **„Antworten sammeln“** bzw. **„Teilen“** klicken.
-3. Auf das **`</>` Einbetten**-Symbol klicken.
-4. Den kompletten **`<iframe ...>`-Code** kopieren.
-5. In `index.html` den Block **8 · ANMELDUNG** öffnen und die Markierung suchen:
-   ```html
-   <!-- MICROSOFT FORMS LINK HIER EINFÜGEN -->
-   ```
-6. Dort den vorhandenen **Platzhalter-Block** (`<div class="rsvp__placeholder">…</div>`)
-   löschen und stattdessen deinen iframe einsetzen, z.B.:
-   ```html
-   <iframe
-     class="rsvp__iframe"
-     src="HIER_DEIN_FORMS_LINK"
-     title="Anmeldung zur Hochzeit"
-     frameborder="0" marginwidth="0" marginheight="0"
-     allowfullscreen>
-   </iframe>
-   ```
-
-> **Automatik:** Sobald ein `<iframe>` im Anmeldebereich vorhanden ist, blendet
-> `main.js` den Platzhalter von selbst aus und stylt das Formular passend.
-> Ist **kein** Link eingetragen, bleibt der schöne Platzhalter mit Button sichtbar.
-
-**Antworten als Excel:** In Microsoft Forms → Reiter **„Antworten“** →
-**„In Excel öffnen“** bzw. **„Ergebnisse exportieren“**.
+- Gäste füllen Vorname, Nachname und Zu-/Absage aus. Bei **Zusage** erscheinen
+  zusätzlich Erwachsene, Kinder, Alter der Kinder, Essenswünsche und Allergien.
+- Nach dem Absenden erscheint eine elegante Erfolgsmeldung.
+- Einrichtung: identisch zur Mitbringliste – es genügt, **einmal** Supabase
+  einzurichten und `config.js` auszufüllen (siehe Abschnitt
+  „Mitbringliste (digital, mit Supabase)" weiter unten). Das `supabase.sql`
+  legt die RSVP-Tabelle gleich mit an.
+- **Auswertung & Export:** in `admin.html` → Abschnitt „Anmeldungen"
+  (Zusagen/Absagen filtern, Summen, CSV exportieren, einzelne Anmeldung löschen).
 
 ---
 
@@ -213,7 +196,7 @@ Damit Gäste die Seite z.B. von der Einladung scannen können:
 - [ ] **Bilder ersetzen** – alle 6 Bilder im Hauptordner (komprimiert)
 - [ ] **Texte prüfen** – Namen, Datum, Zeiten, Adresse, FAQ, Update-Datum
 - [ ] **Google-Maps-Link** in Block 5 kontrollieren
-- [ ] **Microsoft Forms Link einsetzen** (Block 8) und einmal testen
+- [ ] **Supabase einrichten** (`supabase.sql`) & `config.js` ausfüllen → RSVP + Mitbringliste testen
 - [ ] **GitHub Repository erstellen** und Dateien hochladen
 - [ ] **Cloudflare Pages verbinden** (Output-Verzeichnis `/`, kein Build)
 - [ ] Seite auf dem **Handy** testen (Smooth Scroll, FAQ, Formular)
@@ -228,5 +211,79 @@ Damit Gäste die Seite z.B. von der Einladung scannen können:
 - **Animationsstärke / Abstände** ebenfalls dort über die CSS-Variablen.
 - Die Seite kommt **ohne externe Abhängigkeiten** aus – außer Google Fonts
   (Cormorant Garamond & Inter), die im `<head>` von `index.html` geladen werden.
+
+---
+
+## Mitbringliste (digital, mit Supabase)
+
+Die Seiten `bringlist.html` (für Gäste) und `admin.html` (zum Verwalten) bilden
+eine echte Mitbringliste mit Live-Speicherung. Gäste tragen sich mit Namen ein;
+ist ein Punkt vollständig vergeben, schließt er automatisch.
+
+**Zugehörige Dateien** (alle flach im Hauptordner):
+`bringlist.html`, `admin.html`, `bringlist.css`, `bringlist.js`, `admin.js`,
+`config.js`, `supabase.sql`.
+
+### Schritt 1 · Supabase-Projekt erstellen
+1. Auf [supabase.com](https://supabase.com) kostenlos registrieren.
+2. **New project** anlegen (Name frei, Region z. B. Frankfurt, Passwort vergeben).
+3. Kurz warten, bis das Projekt bereit ist.
+
+### Schritt 2 · Datenbank einrichten (SQL ausführen)
+1. Im Projekt links auf **SQL Editor** → **New query**.
+2. Den **kompletten Inhalt** von `supabase.sql` hineinkopieren.
+3. **Run** klicken. Damit werden Tabellen, Sicherheitsregeln, die
+   Überbuchungs-Funktion `claim_item` und Beispiel-Items angelegt.
+
+### Schritt 3 · Zugangsdaten kopieren
+In Supabase unter **Project Settings → API**:
+- **Project URL** (z. B. `https://abcdxyz.supabase.co`)
+- **anon public** Key (langer Schlüssel)
+
+> Der `anon`-Key darf öffentlich sein – die Sicherheit kommt aus den
+> Row-Level-Security-Regeln und der Funktion `claim_item` in `supabase.sql`.
+
+### Schritt 4 · Werte in `config.js` eintragen
+Öffne `config.js` und trage ein:
+```js
+SUPABASE_URL:      "https://DEIN-PROJEKT.supabase.co",
+SUPABASE_ANON_KEY: "DEIN-ANON-PUBLIC-KEY",
+ADMIN_PASSWORD:    "Hochzeit2026"
+```
+
+### Schritt 5 · Admin-Passwort ändern
+In `config.js` den Wert `ADMIN_PASSWORD` auf ein eigenes Passwort setzen.
+
+> ⚠️ **Sicherheitshinweis:** Dieser Passwortschutz ist nur ein **einfacher Schutz
+> im Browser**, KEIN hochsicherer Schutz. Das Passwort steht in einer öffentlich
+> abrufbaren Datei und schützt nur vor zufälligem Zugriff. Teile die
+> `admin.html`-Adresse nicht öffentlich und nutze ein Passwort, das du sonst
+> nirgends verwendest.
+>
+> **Datenschutz-Hinweis:** Damit der Admin-Bereich die Anmeldungen mit dem
+> öffentlichen `anon`-Key lesen kann, sind die RSVP-Daten technisch über die
+> Supabase-API abrufbar. Für eine private Hochzeitsseite ist das in der Regel
+> vertretbar – die Seite/Repo aber bitte nicht öffentlich bewerben.
+
+### Schritt 6 · Hochladen & veröffentlichen
+1. Die geänderte `config.js` und die neuen Dateien zu **GitHub** hochladen
+   (siehe Abschnitt 4 oben).
+2. **Cloudflare Pages** deployt automatisch neu (siehe Abschnitt 5).
+3. Aufruf der Liste live unter `…pages.dev/bringlist.html`,
+   Verwaltung unter `…pages.dev/admin.html`.
+
+### Schritt 7 · QR-Code
+Den QR-Code wie in Abschnitt 6 beschrieben erstellen – entweder für die
+Startseite oder direkt für `…/bringlist.html`.
+
+### Bedienung
+- **Gäste:** sehen die Mitbringliste **direkt auf der Startseite** (Abschnitt
+  „Mitbringliste") – alternativ auch unter `bringlist.html`. Punkt wählen, Name +
+  Menge eintragen. Volle Punkte sind deaktiviert und dezent ausgegraut.
+- **Admin:** öffnet `admin.html`, gibt das Passwort ein, kann Punkte anlegen,
+  aktiv/inaktiv schalten, löschen (mit Bestätigung) und einzelne Beiträge
+  entfernen.
+
+---
 
 Viel Freude – und herzlichen Glückwunsch! 🥂

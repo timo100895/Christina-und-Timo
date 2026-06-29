@@ -27,6 +27,8 @@
   --color-sage-dark:  #4f5a42;   /* Button Hover */
   --color-greige:     #a89c84;   /* Greige / Taupe (wie Einladungskarten) */
   --color-line:       rgba(140,138,88,0.32); /* Linien hell (Olivgold transparent) */
+  --color-gold-warm:  #c8a46b;   /* warmes Gold für Fortschrittsbalken */
+  --color-line-soft:  rgba(31,31,31,0.10); /* sehr helle Linie (Balken-Track) */
 
   /* --- Schriften --- */
   --font-head:   "Cormorant Garamond", Georgia, "Times New Roman", serif;
@@ -527,6 +529,53 @@ p:last-child { margin-bottom: 0; }
 }
 .stay__inner .btn { margin-top: 10px; }
 
+/* =================================================================
+   MITBRINGLISTE – direkt auf der Startseite eingebettet
+   (gleiche Optik wie bringlist.css, hier mit den Site-Tokens)
+   ================================================================= */
+.bringcta { background-color: var(--color-white); }
+.bl-embed { max-width: 920px; margin-inline: auto; }
+
+.btn:disabled { opacity: 0.45; cursor: not-allowed; pointer-events: none; }
+
+.bl-status { text-align: center; padding: 14px 0; font-size: 15px; color: var(--color-body); }
+.bl-status--error { color: #9a3b2f; }
+.bl-status[hidden] { display: none; }
+
+.bl-item { border-top: 1px solid var(--color-line); padding: clamp(28px, 4vw, 44px) 0; }
+.bl-item:last-child { border-bottom: 1px solid var(--color-line); }
+.bl-item__head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 6px; }
+.bl-item__title { font-family: var(--font-head); font-weight: 500; color: var(--color-ink); font-size: clamp(26px, 3.4vw, 38px); line-height: 1.1; margin: 0; }
+.bl-item__status { flex: 0 0 auto; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--color-gold); }
+.bl-item__desc { margin: 0 0 18px; color: var(--color-body); }
+.bl-item__meta { display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: 14px; letter-spacing: 0.5px; color: var(--color-ink); margin-bottom: 12px; }
+.bl-item__meta strong { font-weight: 500; }
+.bl-progress { height: 4px; width: 100%; background: var(--color-line-soft); margin-bottom: 16px; }
+.bl-progress__bar { height: 100%; width: 0; background: var(--color-gold-warm); transition: width 0.6s cubic-bezier(0.22,0.61,0.36,1); }
+.bl-item__names { font-size: 15px; color: var(--color-body); margin: 0 0 20px; }
+.bl-item__names .nobody { font-style: italic; }
+.bl-item.is-complete { opacity: 0.62; }
+.bl-item.is-complete .bl-item__status { color: var(--color-sage); }
+.bl-item.is-complete .bl-progress__bar { background: var(--color-sage); }
+
+/* Modal */
+.bl-modal { position: fixed; inset: 0; z-index: 100; display: flex; }
+.bl-modal[hidden] { display: none; }
+.bl-modal__overlay { position: absolute; inset: 0; background: rgba(31,31,31,0.55); }
+.bl-modal__box { position: relative; margin: auto; width: min(520px, calc(100% - 32px)); max-height: calc(100% - 48px); overflow-y: auto; background: var(--color-white); border: 1px solid var(--color-line); padding: clamp(28px, 5vw, 48px); }
+.bl-modal__close { position: absolute; top: 12px; right: 14px; background: none; border: 0; cursor: pointer; font-size: 26px; line-height: 1; color: var(--color-body); }
+.bl-modal__close:hover { color: var(--color-ink); }
+.bl-modal__title { font-family: var(--font-head); font-weight: 500; color: var(--color-ink); font-size: clamp(26px, 4vw, 34px); line-height: 1.1; margin-bottom: 6px; }
+.bl-modal__sub { margin: 0 0 24px; font-size: 15px; color: var(--color-body); }
+.bl-field { display: block; margin-bottom: 18px; }
+.bl-field__label { display: block; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: var(--color-ink); margin-bottom: 8px; }
+.bl-input, .bl-textarea { width: 100%; font-family: var(--font-body); font-size: 16px; color: var(--color-ink); background: var(--color-cream); border: 1px solid var(--color-line); border-radius: 0; padding: 12px 14px; }
+.bl-textarea { resize: vertical; }
+.bl-input:focus, .bl-textarea:focus { border-color: var(--color-gold); }
+.bl-form__error { color: #9a3b2f; font-size: 14px; margin: 0 0 16px; }
+.bl-form__success { color: var(--color-sage); font-size: 14px; margin: 0 0 16px; }
+.bl-modal .btn { width: 100%; text-align: center; }
+
 
 /* =================================================================
    7 · FAQ
@@ -653,50 +702,40 @@ p:last-child { margin-bottom: 0; }
    8 · ANMELDUNG / MICROSOFT FORMS
    ================================================================= */
 .rsvp { background-color: var(--color-white); }
-.rsvp__inner { max-width: 880px; margin-inline: auto; }
+.rsvp__inner { max-width: 720px; margin-inline: auto; }
 .rsvp__form {
   border: 1px solid var(--color-line);
-  border-radius: var(--radius);
+  border-radius: 0;
   background-color: var(--color-cream);
-  padding: clamp(16px, 3vw, 28px);
-  min-height: 200px;
+  padding: clamp(24px, 4vw, 48px);
 }
-/* eingebettetes Formular (Microsoft Forms iframe) */
-.rsvp__iframe {
-  width: 100%;
-  /* Höhe des Formulars: groß genug, damit KEIN innerer Scrollbalken nötig ist.
-     Falls unten zu viel Leerraum bleibt -> Wert verkleinern.
-     Falls das Formular doch scrollt -> Wert vergrößern. */
-  min-height: 1650px;
-  border: 0;
-  border-radius: var(--radius);
-  background: #fff;
+
+/* zweispaltige Reihe (Vorname/Nachname, Erwachsene/Kinder) */
+.rsvp__row { display: flex; gap: 18px; }
+.rsvp__row .bl-field { flex: 1 1 0; }
+
+/* Ja / Nein Auswahl */
+.rsvp__toggle { border: 0; padding: 0; margin: 0 0 18px; }
+.rsvp__toggle legend { padding: 0; margin-bottom: 10px; }
+.rsvp__opt {
+  display: inline-flex; align-items: center; gap: 9px;
+  margin-right: 26px; font-size: 16px; color: var(--color-ink); cursor: pointer;
 }
-/* Platzhalter, solange kein Formular eingebettet ist */
-.rsvp__placeholder {
-  text-align: center;
-  padding: clamp(40px, 6vw, 72px) 20px;
-}
-.rsvp__placeholder-mark {
-  display: block;
-  font-size: 26px;
-  color: var(--color-gold);
-  margin-bottom: 18px;
-}
-.rsvp__placeholder-title {
-  font-size: clamp(24px, 3vw, 32px);
-  margin-bottom: 12px;
-}
-.rsvp__placeholder-text {
-  max-width: 460px;
-  margin: 0 auto 26px;
-}
-.rsvp__note {
-  text-align: center;
-  font-size: 14px;
-  color: var(--color-body);
-  max-width: 620px;
-  margin: 26px auto 0;
+.rsvp__opt input { width: 17px; height: 17px; accent-color: var(--color-sage); }
+
+.rsvp__yes[hidden] { display: none; }
+
+/* Absenden-Button volle Breite */
+.rsvp__formgrid .btn { width: 100%; text-align: center; margin-top: 4px; }
+
+/* Erfolgsmeldung */
+.rsvp__success { text-align: center; padding: clamp(20px, 4vw, 40px) 10px; }
+.rsvp__success-mark { display: block; font-size: 26px; color: var(--color-gold); margin-bottom: 16px; }
+.rsvp__success-title { font-family: var(--font-head); font-weight: 500; color: var(--color-ink); font-size: clamp(28px, 4vw, 40px); line-height: 1.1; margin-bottom: 10px; }
+.rsvp__success-text { max-width: 460px; margin: 0 auto; color: var(--color-body); }
+
+@media (max-width: 560px) {
+  .rsvp__row { flex-direction: column; gap: 0; }
 }
 
 

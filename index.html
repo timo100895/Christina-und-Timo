@@ -409,14 +409,20 @@
   <!-- 7a · MITBRINGLISTE (Button zur Unterseite)                   -->
   <!-- ============================================================= -->
   <section class="section bringcta" id="mitbringen">
-    <div class="container bringcta__inner reveal">
-      <p class="eyebrow">Buffet</p>
-      <h2 class="section__title">Mitbringliste</h2>
-      <p class="lead">
-        Ihr möchtet etwas zum Buffet beisteuern? Auf unserer Mitbringliste seht
-        ihr, was noch gebraucht wird – tragt euch ganz einfach mit eurem Namen ein.
-      </p>
-      <a href="bringlist.html" class="btn btn--primary">Zur Mitbringliste</a>
+    <div class="container">
+      <div class="section__head reveal">
+        <p class="eyebrow">Buffet</p>
+        <h2 class="section__title">Mitbringliste</h2>
+        <p class="lead">
+          Ihr möchtet etwas zum Buffet beisteuern? Hier seht ihr, was noch
+          gebraucht wird – tragt euch ganz einfach mit eurem Namen ein. Ist ein
+          Punkt vollständig vergeben, schließt er automatisch.
+        </p>
+      </div>
+
+      <!-- Mitbringliste wird hier von bringlist.js live gefüllt -->
+      <p class="bl-status" id="blStatus" role="status" aria-live="polite">Lädt …</p>
+      <div class="bl-embed" id="blList"></div>
     </div>
   </section>
 
@@ -450,7 +456,7 @@
 
 
   <!-- ============================================================= -->
-  <!-- 8 · ANMELDUNG / MICROSOFT FORMS                              -->
+  <!-- 8 · ANMELDUNG / RSVP  (eigenes Formular, Speicherung Supabase) -->
   <!-- ============================================================= -->
   <section class="section rsvp" id="anmeldung">
     <div class="container rsvp__inner">
@@ -461,31 +467,78 @@
         nicht dabei sein können, gebt uns bitte bis zum 22. August 2026 Bescheid.</p>
       </div>
 
-      <!-- ========================================================= -->
-      <!-- MICROSOFT FORMS – Formular ist unten eingebettet.         -->
-      <!-- Zum Ändern die src-URL im <iframe> austauschen.           -->
-      <!-- Antworten landen automatisch in Microsoft Forms.          -->
-      <!-- ========================================================= -->
-
       <div class="rsvp__form reveal">
 
-        <!-- ===== MICROSOFT FORMS EINBETTUNG =====
-             Zum späteren Tauschen einfach die src-URL unten ersetzen. -->
-        <iframe
-          class="rsvp__iframe"
-          src="https://forms.cloud.microsoft/e/PxBKtaCXGH?embed=true"
-          title="Anmeldung zur Hochzeit von Christina und Timo"
-          frameborder="0"
-          marginwidth="0"
-          marginheight="0"
-          allowfullscreen
-          webkitallowfullscreen
-          mozallowfullscreen
-          msallowfullscreen>
-        </iframe>
+        <!-- Hinweis bei fehlender Konfiguration / Ladefehler -->
+        <p class="bl-status" id="rsvpStatus" role="status" aria-live="polite" hidden></p>
+
+        <form id="rsvpForm" class="rsvp__formgrid" novalidate>
+          <div class="rsvp__row">
+            <label class="bl-field">
+              <span class="bl-field__label">Vorname *</span>
+              <input class="bl-input" type="text" id="rsvpFirst" autocomplete="given-name" required />
+            </label>
+            <label class="bl-field">
+              <span class="bl-field__label">Nachname *</span>
+              <input class="bl-input" type="text" id="rsvpLast" autocomplete="family-name" required />
+            </label>
+          </div>
+
+          <fieldset class="rsvp__toggle">
+            <legend class="bl-field__label">Seid ihr dabei? *</legend>
+            <label class="rsvp__opt">
+              <input type="radio" name="attending" value="yes" />
+              <span>Ja, wir kommen</span>
+            </label>
+            <label class="rsvp__opt">
+              <input type="radio" name="attending" value="no" />
+              <span>Leider nein</span>
+            </label>
+          </fieldset>
+
+          <!-- Felder nur bei Zusage (per JS ein-/ausgeblendet) -->
+          <div class="rsvp__yes" id="rsvpYesFields" hidden>
+            <div class="rsvp__row">
+              <label class="bl-field">
+                <span class="bl-field__label">Erwachsene</span>
+                <input class="bl-input" type="number" id="rsvpAdults" min="0" step="1" value="1" />
+              </label>
+              <label class="bl-field">
+                <span class="bl-field__label">Kinder</span>
+                <input class="bl-input" type="number" id="rsvpChildren" min="0" step="1" value="0" />
+              </label>
+            </div>
+            <label class="bl-field">
+              <span class="bl-field__label">Alter der Kinder (optional)</span>
+              <input class="bl-input" type="text" id="rsvpAges" placeholder="z. B. 4 und 7 Jahre" />
+            </label>
+            <label class="bl-field">
+              <span class="bl-field__label">Essenswünsche (optional)</span>
+              <input class="bl-input" type="text" id="rsvpFood" placeholder="z. B. vegetarisch, vegan" />
+            </label>
+            <label class="bl-field">
+              <span class="bl-field__label">Allergien / Unverträglichkeiten (optional)</span>
+              <input class="bl-input" type="text" id="rsvpAllergies" />
+            </label>
+          </div>
+
+          <label class="bl-field">
+            <span class="bl-field__label">Nachricht an uns (optional)</span>
+            <textarea class="bl-textarea" id="rsvpMessage" rows="3"></textarea>
+          </label>
+
+          <p class="bl-form__error" id="rsvpError" hidden></p>
+          <button class="btn btn--primary" type="submit" id="rsvpSubmit">Anmeldung absenden</button>
+        </form>
+
+        <!-- Erfolgsmeldung (ersetzt das Formular nach dem Absenden) -->
+        <div class="rsvp__success" id="rsvpSuccess" hidden>
+          <span class="rsvp__success-mark" aria-hidden="true">✦</span>
+          <h3 class="rsvp__success-title">Vielen Dank!</h3>
+          <p class="rsvp__success-text" id="rsvpSuccessText"></p>
+        </div>
 
       </div>
-
     </div>
   </section>
 
@@ -558,7 +611,45 @@
   </footer>
 
 
+  <!-- ============================================================= -->
+  <!-- MODAL: Mitbringliste-Eintrag                                 -->
+  <!-- ============================================================= -->
+  <div class="bl-modal" id="claimModal" hidden>
+    <div class="bl-modal__overlay" data-close></div>
+    <div class="bl-modal__box" role="dialog" aria-modal="true" aria-labelledby="claimTitle">
+      <button class="bl-modal__close" type="button" data-close aria-label="Schließen">×</button>
+      <p class="eyebrow">Ich bringe mit</p>
+      <h3 class="bl-modal__title" id="claimTitle">Titel</h3>
+      <p class="bl-modal__sub" id="claimSub">Noch offen</p>
+
+      <form id="claimForm" novalidate>
+        <label class="bl-field">
+          <span class="bl-field__label">Name *</span>
+          <input class="bl-input" type="text" id="cName" autocomplete="name" required />
+        </label>
+        <label class="bl-field">
+          <span class="bl-field__label">Menge</span>
+          <input class="bl-input" type="number" id="cQty" min="1" step="1" value="1" />
+        </label>
+        <label class="bl-field">
+          <span class="bl-field__label">Kommentar (optional)</span>
+          <textarea class="bl-textarea" id="cComment" rows="3" placeholder="z. B. ich bringe einen Apfelkuchen"></textarea>
+        </label>
+        <p class="bl-form__error"   id="claimError"   hidden></p>
+        <p class="bl-form__success" id="claimSuccess" hidden></p>
+        <button class="btn btn--primary" type="submit" id="claimSubmit">Eintragen</button>
+      </form>
+    </div>
+  </div>
+
+
   <!-- Eigenes JavaScript -->
   <script src="main.js"></script>
+
+  <!-- Mitbringliste (Supabase) – Reihenfolge: Config, Supabase, eigenes Script -->
+  <script src="config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="bringlist.js"></script>
+  <script src="rsvp.js"></script>
 </body>
 </html>
