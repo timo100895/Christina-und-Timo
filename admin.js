@@ -52,7 +52,9 @@
     if (sb) return;
     if (!configured()) { setStatus("Supabase ist noch nicht konfiguriert (config.js).", true); return; }
     if (!window.supabase) { setStatus("Supabase-Bibliothek konnte nicht geladen werden.", true); return; }
-    sb = window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY);
+    // URL säubern: nur die Projekt-URL, ohne /rest/v1 oder Schrägstrich am Ende
+    var SB_URL = (cfg.SUPABASE_URL || "").trim().replace(/\/+$/, "").replace(/\/rest\/v1$/i, "");
+    sb = window.supabase.createClient(SB_URL, cfg.SUPABASE_ANON_KEY);
   }
 
   loginForm.addEventListener("submit", function (e) {

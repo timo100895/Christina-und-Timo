@@ -11,7 +11,7 @@ window.BRINGLIST_CONFIG = {
   /* 1) Supabase Project URL
         Supabase → Project Settings → Data API → "Project URL"
         Beispiel: https://abcdxyz.supabase.co */
-  SUPABASE_URL: "https://qlnynlvrgojfylmcvpzx.supabase.co/rest/v1/",
+  SUPABASE_URL: "https://qlnynlvrgojfylmcvpzx.supabase.co",
 
   /* 2) Supabase anon public Key
         Supabase → Project Settings → API Keys → "anon public"

@@ -23,7 +23,9 @@
     return;
   }
 
-  var sb = window.supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY);
+  // URL säubern: nur die Projekt-URL, ohne /rest/v1 oder Schrägstrich am Ende
+  var SB_URL = (cfg.SUPABASE_URL || "").trim().replace(/\/+$/, "").replace(/\/rest\/v1$/i, "");
+  var sb = window.supabase.createClient(SB_URL, cfg.SUPABASE_ANON_KEY);
 
   /* --- Modal-Elemente --- */
   var modal       = document.getElementById("claimModal");
